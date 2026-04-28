@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Reservar Vehículo - Rental Autos">
+    <section class="pt-32 pb-24 bg-slate-50 min-h-[80vh] flex items-center">
+        <div class="max-w-3xl mx-auto px-6 w-full">
+            <div class="text-center mb-12">
+                <span class="text-brand-500 font-bold tracking-widest uppercase text-sm mb-3 block">Reserva en Línea</span>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 italic">ALQUILA TU AVENTURA</h1>
+                <p class="text-slate-500 text-lg max-w-xl mx-auto">Selecciona tu vehículo ideal y las fechas de tu viaje. Confirmación inmediata vía email.</p>
+            </div>
+            
+            <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl shadow-slate-200 border border-slate-100">
+                <form id="reservaForm" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Fecha y Hora de Retiro</label>
+                            <input name="Retiro" type="datetime-local" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Fecha y Hora de Devolución</label>
+                            <input name="Devolucion" type="datetime-local" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Categoría de Vehículo</label>
+                            <select name="Vehiculo" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                                <option value="" disabled selected>Seleccionar vehículo</option>
+                                <option>SUV Premium (BMW X5 o similar)</option>
+                                <option>Sedan de Lujo (Audi A4 o similar)</option>
+                                <option>Deportivo (Porsche 911 o similar)</option>
+                                <option>Compacto Urbano (Mini Cooper o similar)</option>
+                                <option>4x4 Todo Terreno (Jeep Wrangler o similar)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Lugar de Retiro</label>
+                            <select name="Lugar" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                                <option>Aeropuerto Internacional</option>
+                                <option>Centro de la Ciudad</option>
+                                <option>Hotel (Entrega a domicilio)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Nombre Completo</label>
+                            <input name="Nombre" type="text" placeholder="Ej: Carlos Silva" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Email de Contacto</label>
+                            <input name="Email" type="email" placeholder="carlos@email.com" required class="w-full bg-slate-50 border-2 border-slate-50 py-4 px-5 rounded-2xl focus:border-brand-500 focus:bg-white transition-all outline-none font-bold text-slate-800">
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <button type="submit" id="submitBtn" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-black tracking-widest uppercase text-base py-5 rounded-2xl transition-all shadow-[0_12px_24px_-8px_rgba(255,51,102,0.5)] hover:-translate-y-1 active:translate-y-0">
+                            RESERVAR AHORA
+                        </button>
+                        <p id="formStatus" class="text-sm font-bold text-emerald-500 hidden text-center mt-6 p-4 bg-emerald-50 rounded-2xl border border-emerald-100 italic">
+                            ¡Petición enviada! Estamos preparando tu motor. Te contactaremos en minutos.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<script>
+	const form = document.getElementById('reservaForm') as HTMLFormElement;
+	const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+	const formStatus = document.getElementById('formStatus');
+
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+			const originalText = submitBtn.innerText;
+			submitBtn.innerText = 'PROCESANDO RESERVA...';
+			submitBtn.disabled = true;
+
+			try {
+				const formData = new FormData(form);
+				const res = await fetch('/api/send-email', {
+					method: 'POST',
+					body: formData
+				});
+
+				if (res.ok) {
+					form.reset();
+					formStatus?.classList.remove('hidden');
+					window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+					setTimeout(() => {
+						formStatus?.classList.add('hidden');
+					}, 8000);
+				} else {
+					alert('Ocurrió un error al procesar tu solicitud. Por favor intenta nuevamente.');
+				}
+			} catch (error) {
+				alert('Error de red al conectar con el servidor.');
+			} finally {
+				submitBtn.innerText = originalText;
+				submitBtn.disabled = false;
+			}
+		});
+	}
+</script>
