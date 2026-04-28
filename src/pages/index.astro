@@ -65,6 +65,8 @@ import Layout from '../layouts/Layout.astro';
 						Buscar Vehículos
 					</button>
 					<p id="formStatus" class="text-sm font-bold text-emerald-500 hidden text-center">¡Solicitud recibida! Te contactaremos pronto.</p>
+					<input type="hidden" name="_subject" value="Nueva consulta de arriendo de auto">
+					<input type="hidden" name="_captcha" value="false">
 				</form>
 			</div>
 		</div>
@@ -175,8 +177,11 @@ import Layout from '../layouts/Layout.astro';
 
 			try {
 				const formData = new FormData(form);
-				const res = await fetch('/api/send-email', {
+				const res = await fetch('https://formsubmit.co/ajax/lmedina.web@gmail.com', {
 					method: 'POST',
+					headers: {
+						'Accept': 'application/json'
+					},
 					body: formData
 				});
 
