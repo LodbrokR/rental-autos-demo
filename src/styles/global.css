@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-brand-50: #f4f7fa;
+  --color-brand-100: #e5edf5;
+  --color-brand-500: #ff3366; /* Vibrant accent */
+  --color-brand-600: #e62e5c;
+  --color-brand-900: #0a1128;
+}
+
+body {
+  @apply font-sans bg-brand-50 text-slate-800;
+}

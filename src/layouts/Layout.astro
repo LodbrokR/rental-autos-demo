@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-CL" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Arriendo de vehículos en Chile. Flota moderna y proceso 100% digital." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+		<title>{title} | GoRent Chile</title>
+	</head>
+	<body class="font-sans bg-brand-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+		<header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200">
+			<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+				<a href="/" class="flex items-center gap-2 group">
+					<div class="bg-brand-900 text-white p-2 rounded-lg group-hover:bg-brand-500 transition-colors">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
+					</div>
+					<span class="font-black text-2xl tracking-tight text-brand-900 italic">GO<span class="text-brand-500">RENT</span></span>
+				</a>
+				<nav class="hidden md:flex items-center gap-8">
+					<ul class="flex items-center gap-6 font-bold text-sm text-brand-900">
+						<li><a href="/catalogo" class="hover:text-brand-500 transition-colors">Flota</a></li>
+						<li><a href="/oficinas" class="hover:text-brand-500 transition-colors">Oficinas</a></li>
+						<li><a href="/servicios" class="hover:text-brand-500 transition-colors">Servicios</a></li>
+					</ul>
+					<a href="/reservas" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-[0_8px_20px_-6px_rgba(255,51,102,0.5)] hover:-translate-y-0.5">Reservar Ahora</a>
+				</nav>
+			</div>
+		</header>
+		<main class="flex-grow pt-20">
+			<slot />
+		</main>
+		<footer class="bg-brand-900 text-slate-400 py-12 mt-auto">
+			<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+				<div class="col-span-2">
+					<span class="font-black text-2xl tracking-tight text-white italic mb-4 block">GO<span class="text-brand-500">RENT</span></span>
+					<p class="text-sm max-w-sm">Revolucionando el arriendo de autos en Chile. Rápido, 100% digital y sin papeleos interminables.</p>
+				</div>
+				<div>
+					<h4 class="text-white font-bold mb-4">Enlaces Rápidos</h4>
+					<ul class="space-y-2 text-sm">
+						<li><a href="#" class="hover:text-brand-500 transition-colors">Preguntas Frecuentes</a></li>
+						<li><a href="#" class="hover:text-brand-500 transition-colors">Términos de Arriendo</a></li>
+						<li><a href="#" class="hover:text-brand-500 transition-colors">Seguros y Coberturas</a></li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="text-white font-bold mb-4">Soporte</h4>
+					<p class="text-sm mb-2">Asistencia en ruta 24/7</p>
+					<p class="text-brand-500 font-bold text-xl">800 123 456</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

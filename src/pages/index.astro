@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Tu próximo viaje empieza aquí">
+	<!-- Hero con Buscador Bento -->
+	<section class="relative pt-12 pb-32 overflow-hidden bg-brand-900">
+		<div class="absolute inset-0 z-0">
+			<!-- Banana image -->
+			<div class="w-full h-full bg-slate-800 flex items-center justify-center text-slate-500 opacity-50">
+				[Imagen Banana: hero_rental.jpg]
+			</div>
+			<div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/90 to-transparent"></div>
+		</div>
+
+		<div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center min-h-[600px]">
+			<!-- Text Content -->
+			<div class="lg:col-span-7 text-white">
+				<h1 class="text-5xl md:text-7xl font-black mb-6 leading-none tracking-tight">
+					Maneja a tu <br/><span class="text-brand-500">propio ritmo.</span>
+				</h1>
+				<p class="text-xl text-slate-300 mb-8 max-w-lg font-medium">
+					La flota más moderna de Chile a un clic de distancia. Retira en el aeropuerto o en nuestras sucursales urbanas.
+				</p>
+				<div class="flex items-center gap-4 text-sm font-bold">
+					<div class="flex items-center gap-2"><svg class="text-brand-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Sin cargos ocultos</div>
+					<div class="flex items-center gap-2"><svg class="text-brand-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Cancelación gratuita</div>
+				</div>
+			</div>
+
+			<!-- Booking Bento Form -->
+			<div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-2xl">
+				<h3 class="text-2xl font-black text-brand-900 mb-6">Encuentra tu vehículo</h3>
+				<form class="space-y-4">
+					<div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+						<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Lugar de Retiro</label>
+						<select class="w-full bg-transparent font-bold text-brand-900 outline-none text-lg">
+							<option>Aeropuerto SCL (Santiago)</option>
+							<option>Sucursal Las Condes</option>
+							<option>Aeropuerto PMC (Puerto Montt)</option>
+						</select>
+					</div>
+
+					<div class="grid grid-cols-2 gap-4">
+						<div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+							<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Fecha Retiro</label>
+							<input type="date" class="w-full bg-transparent font-bold text-brand-900 outline-none">
+						</div>
+						<div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+							<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Hora</label>
+							<input type="time" class="w-full bg-transparent font-bold text-brand-900 outline-none" value="10:00">
+						</div>
+					</div>
+
+					<div class="grid grid-cols-2 gap-4">
+						<div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+							<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Fecha Devolución</label>
+							<input type="date" class="w-full bg-transparent font-bold text-brand-900 outline-none">
+						</div>
+						<div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+							<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Hora</label>
+							<input type="time" class="w-full bg-transparent font-bold text-brand-900 outline-none" value="10:00">
+						</div>
+					</div>
+
+					<button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-lg py-4 rounded-xl transition-all shadow-[0_8px_20px_-6px_rgba(255,51,102,0.5)] mt-4">
+						Buscar Vehículos
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<!-- Categorias Bento Grid -->
+	<section class="py-24 max-w-7xl mx-auto px-6">
+		<div class="flex justify-between items-end mb-12">
+			<div>
+				<h2 class="text-4xl font-black text-brand-900 mb-2">Nuestra Flota</h2>
+				<p class="text-slate-500 font-medium">Modelos 2025/2026 en perfectas condiciones.</p>
+			</div>
+			<a href="/catalogo" class="text-brand-500 font-bold hover:text-brand-600 hidden md:block">Ver todos los autos &rarr;</a>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<!-- Card 1 -->
+			<div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group cursor-pointer relative overflow-hidden">
+				<div class="bg-brand-50 rounded-2xl h-48 mb-6 flex items-center justify-center p-4">
+					[Imagen Banana: auto_suv.png (transparente idealmente)]
+				</div>
+				<div class="mb-4">
+					<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">SUV Familiar</span>
+					<h3 class="text-2xl font-black text-brand-900">Toyota RAV4 <span class="text-sm font-normal text-slate-500">o similar</span></h3>
+				</div>
+				<div class="flex gap-4 mb-6 text-sm font-bold text-slate-600">
+					<span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> 5</span>
+					<span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> 4</span>
+					<span class="flex items-center gap-1">Automático</span>
+				</div>
+				<div class="flex justify-between items-center border-t border-slate-100 pt-4">
+					<div>
+						<span class="text-xs text-slate-500 font-bold block">Desde</span>
+						<span class="text-2xl font-black text-brand-500">$45.000<span class="text-sm text-slate-400 font-medium">/día</span></span>
+					</div>
+					<div class="w-10 h-10 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors">
+						&rarr;
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 2 -->
+			<div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group cursor-pointer relative overflow-hidden">
+				<div class="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">ECO</div>
+				<div class="bg-brand-50 rounded-2xl h-48 mb-6 flex items-center justify-center p-4">
+					[Imagen Banana: auto_electrico.png]
+				</div>
+				<div class="mb-4">
+					<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Hatchback Híbrido</span>
+					<h3 class="text-2xl font-black text-brand-900">Toyota Yaris Cross</h3>
+				</div>
+				<div class="flex gap-4 mb-6 text-sm font-bold text-slate-600">
+					<span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg> 5</span>
+					<span class="flex items-center gap-1">Auto</span>
+					<span class="flex items-center gap-1 text-emerald-600">Híbrido</span>
+				</div>
+				<div class="flex justify-between items-center border-t border-slate-100 pt-4">
+					<div>
+						<span class="text-xs text-slate-500 font-bold block">Desde</span>
+						<span class="text-2xl font-black text-brand-500">$38.000<span class="text-sm text-slate-400 font-medium">/día</span></span>
+					</div>
+					<div class="w-10 h-10 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors">
+						&rarr;
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 3 -->
+			<div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group cursor-pointer relative overflow-hidden">
+				<div class="bg-brand-50 rounded-2xl h-48 mb-6 flex items-center justify-center p-4">
+					[Imagen Banana: auto_camioneta.png]
+				</div>
+				<div class="mb-4">
+					<span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pick-Up 4x4</span>
+					<h3 class="text-2xl font-black text-brand-900">Mitsubishi L200</h3>
+				</div>
+				<div class="flex gap-4 mb-6 text-sm font-bold text-slate-600">
+					<span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg> 5</span>
+					<span class="flex items-center gap-1">Manual</span>
+					<span class="flex items-center gap-1">Diesel</span>
+				</div>
+				<div class="flex justify-between items-center border-t border-slate-100 pt-4">
+					<div>
+						<span class="text-xs text-slate-500 font-bold block">Desde</span>
+						<span class="text-2xl font-black text-brand-500">$55.000<span class="text-sm text-slate-400 font-medium">/día</span></span>
+					</div>
+					<div class="w-10 h-10 rounded-full bg-brand-50 text-brand-500 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors">
+						&rarr;
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
